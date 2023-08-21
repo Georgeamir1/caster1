@@ -1,4 +1,5 @@
 import 'package:caster1/componants.dart';
+import 'package:caster1/regGender.dart';
 import 'package:caster1/regPhone.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -275,19 +276,10 @@ class _verPhoneState extends State<verPhone> {
                             fixedSize: Size.fromHeight(56), // Set the height of the button
                           ),
                           onPressed: () {
-                            // Future<void> sendData() async {
-                            //   final response = await http.post(
-                            //     Uri.parse('https://casty.pythonanywhere.com/api/auth/users'),
-                            //     body: data,
-                            //   );
-                            //   if (response.statusCode == 200) {
-                            //     // Handle the response from the backend
-                            //     print(response.body);
-                            //   } else {
-                            //     // Handle the error
-                            //     print('Request failed with status: ${response.statusCode}.');
-                            //   }
-                            // }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => regGender()),);
+
                           },
                           child: Text(
                             "Verify",
