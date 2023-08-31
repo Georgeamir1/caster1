@@ -26,7 +26,8 @@ class _Onboarding1State extends State<Onboarding1> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
-                children: [
+                children:
+                [
                   SizedBox(height: 40,),
                   Text(textAlign: TextAlign.center,
                       "Make friends with the people like you",

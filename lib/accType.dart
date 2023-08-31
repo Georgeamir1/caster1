@@ -1,17 +1,18 @@
+import 'package:caster1/Email.dart';
 import 'package:caster1/componants.dart';
 import 'package:caster1/regBirthdate.dart';
+import 'package:caster1/regName.dart';
+import 'package:caster1/regPhone.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
-
-import 'Interests.dart';
-class regGender extends StatefulWidget {
+class acctype extends StatefulWidget {
   @override
-  _regGenderState createState() => _regGenderState();
+  _acctypeState createState() => _acctypeState();
 }
 final birthdatekey = GlobalKey<FormState>();
-class _regGenderState extends State<regGender> {
-  bool ismale=false;
-  bool isfemale=false;
+class _acctypeState extends State<acctype> {
+  bool model=false;
+  bool agency=false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,10 @@ class _regGenderState extends State<regGender> {
               children: [
                 BackButtonWidget(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 80.0),
                   child: Center(
                     child: Text(
-                      "What is your gender?",
+                      "Which one are you?",
                       style: TextStyle(
                         color: Primary,
                         fontSize: 24,
@@ -36,26 +37,25 @@ class _regGenderState extends State<regGender> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16,),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children:
                   [
                     SizedBox(
                       width: 155,
-                      height: 144,
+                      height: 200,
                       child:
                       Container(decoration: BoxDecoration(
-                        border: Border.all(color:  ismale ? Primary: Colors.transparent) ,
+                        border: Border.all(color:  model ? Colors.black : Colors.transparent) ,
                         borderRadius: BorderRadius.circular(24),),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              ismale=!ismale;
-                              isfemale= false;
+                              model=!model;
+                              agency= false;
 
                             });
                           },
-                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white),
+                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Secondary),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),
@@ -65,14 +65,14 @@ class _regGenderState extends State<regGender> {
                           ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CircleAvatar(radius: 28,backgroundColor: Primary,child: Icon(size: 32,color: Colors.white,Icons.male_rounded)),
+                             Image.asset('assets/images/model.png'),
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Text(
-                                    "Male",
-                                    style: TextStyle(color: Primary,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                                    "Model",
+                                    style: TextStyle(color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
                                     )
                                 ),
                               )                          ],
@@ -83,15 +83,15 @@ class _regGenderState extends State<regGender> {
                     SizedBox(width: 16,),
                     SizedBox(
                       width: 155,
-                      height: 144,
+                      height: 200,
                       child:
                       Container(decoration: BoxDecoration(
-                        border: Border.all(color:  isfemale ? Colors.pinkAccent:Colors.transparent ) ,
+                        border: Border.all(color:  agency ? Primary :Colors.transparent ) ,
                         borderRadius: BorderRadius.circular(24),),
                         child: ElevatedButton(
                           onPressed: () { setState(() {
-                            ismale=false;
-                            isfemale=!isfemale;
+                            model=false;
+                            agency=!agency;
 
                           });},
                           style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white),
@@ -103,14 +103,14 @@ class _regGenderState extends State<regGender> {
                           ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CircleAvatar(radius: 28,backgroundColor: Colors.pinkAccent,child: Icon(size: 32,color: Colors.white,Icons.male_rounded)),
+                              Image.asset('assets/images/agency.png'),
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Text(
                                     "Female",
-                                    style: TextStyle(color: Colors.pinkAccent,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                                    style: TextStyle(color: Primary,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
                                     )
                                 ),
                               )                          ],
@@ -118,44 +118,34 @@ class _regGenderState extends State<regGender> {
                         ),
                       ),
                     ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 48.0,vertical: 42),
+                  child: Text(textAlign: TextAlign.center,
+                      "To give you a customize experience we need to know who are you",
+                      style: TextStyle(
+                        color: Primary,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      )
+                  ),
+                ),
 
-                  ],
-                ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 8),
-                  child: Row(children:
-                  [
-                    Text('3',style: TextStyle(color: Primary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                    Text("/5",style: TextStyle(color: Secondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                  ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child:
-                  ProgressLine(
-                    value: 0.6, // Replace 0.8 with the actual progress value
-                  ),
-                ),
+                SizedBox(height: 91,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
                   child: Row(
                     children: [
                       ContinueButton(
                         buttonText: 'Continue',
-                        nextPage: Interests(), // Replace NextPage with the actual next page widget
+                        nextPage: regemail(), // Replace NextPage with the actual next page widget
                       ),
 
                     ],
                   ),
                 ),
+                Spacer(),
               ],
             )
         ));

@@ -10,8 +10,10 @@ class name extends StatefulWidget {
   @override
   _nameState createState() => _nameState();
 }
-final namekey = GlobalKey<FormState>();
-String? Name;
+final stnamekey = GlobalKey<FormState>();
+final secnamekey = GlobalKey<FormState>();
+String? stName;
+String? secName;
 
 
 class _nameState extends State<name> {
@@ -28,76 +30,125 @@ class _nameState extends State<name> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackButtonWidget(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Center(
-                    child: Text(
+                Center(
+                  child: Text(textAlign: TextAlign.center,
                       "What’s your name?",
                       style: TextStyle(
                         color: Primary,
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                      )
                   ),
                 ),
-                Center(
+                SizedBox(height: 24,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 16),
                   child:
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 16),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: Secondary,
-                          width: 1.5,
+                  Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Secondary,
+                            width: 1.5,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        children: [
-
-                          Expanded
-                            (
-                            child:
-
-                            Form(
-                              key: namekey,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                                child: TextFormField(
-                                  keyboardType: TextInputType.text,
-                                  decoration: InputDecoration(
-                                    hintText: 'Enter your name',
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your name';
-                                    }
-                                    return null;
-                                  }, onChanged: (value) {
-                                  namekey.currentState!.validate();
-                                  Name = value;
-                                  print('$Name');
-
-                                },
-
-                                  onSaved: (value) {
-                                    Name = value!;
+                        child: Row(
+                          children: [
+                            Expanded
+                              (
+                              child:
+                              Form(
+                                key: stnamekey,
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'First name',
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                    ),
+                                    validator: (value)
+                                    {
+                                      if (value == null || value.isEmpty)
+                                      {
+                                        return 'Please enter your name';
+                                      }
+                                      return null;
+                                    }, onChanged: (value)
+                                  {
+                                    stnamekey.currentState!.validate();
+                                    stName = value;
+                                    print('$stName');
                                   },
+                                    onSaved: (value) {
+                                      stName = value!;
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+                      SizedBox(height: 32,),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Secondary,
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded
+                              (
+                              child:
+                              Form(
+                                key: secnamekey,
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'Last name',
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                    ),
+                                    validator: (value)
+                                    {
+                                      if (value == null || value.isEmpty)
+                                      {
+                                        return 'Please enter your name';
+                                      }
+                                      return null;
+                                    }, onChanged: (value)
+                                  {
+                                    secnamekey.currentState!.validate();
+                                    secName = value;
+                                    print('$secName');
+                                  },
+                                    onSaved: (value) {
+                                      secName = value!;
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Spacer(),
+                 Spacer(),
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 8),
                    child: Row(children:
@@ -115,43 +166,18 @@ class _nameState extends State<name> {
                  ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child:
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0), // The radius of the rounded corners.
-                    child: LinearProgressIndicator(
-                      value: .2, // The current value of the progress indicator (between 0.0 and 1.0).
-                      backgroundColor: Secondary, // The background color of the progress bar.
-                      valueColor: AlwaysStoppedAnimation<Color>(Primary), // The color of the progress bar.
-                    ),
-                  )
+                  child: ProgressLine(value: 0.2, // Replace 0.8 with the actual progress value
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 24),
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Primary, // Set the background color
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32), // Set the border radius
-                            ),
-                            fixedSize: Size.fromHeight(56), // Set the height of the button
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => birthdateReg()),);
-                          },
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
+                      ContinueButton(
+                        buttonText: 'Continue',
+                        nextPage: birthdateReg(), // Replace NextPage with the actual next page widget
                       ),
+
                     ],
                   ),
                 ),

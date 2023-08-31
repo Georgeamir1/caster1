@@ -3,6 +3,7 @@ import 'package:caster1/regPhone.dart';
 import 'package:flutter/material.dart';
 
 import 'Login.dart';
+import 'accType.dart';
 
 class Onboarding3 extends StatefulWidget {
 
@@ -120,7 +121,7 @@ class _Onboarding3State extends State<Onboarding3> {
                         TextButton(onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => regPhone()),);
+                            MaterialPageRoute(builder: (context) => acctype()),);
 
                         }, child: Text('Sign up',style: TextStyle(color: Secondary,
                           fontSize: 16,
