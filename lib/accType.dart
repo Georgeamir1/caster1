@@ -1,5 +1,5 @@
 import 'package:caster1/Email.dart';
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/regBirthdate.dart';
 import 'package:caster1/regName.dart';
 import 'package:caster1/regPhone.dart';
@@ -16,6 +16,7 @@ class _acctypeState extends State<acctype> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body:
         SafeArea(
@@ -24,19 +25,19 @@ class _acctypeState extends State<acctype> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackButtonWidget(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 80.0),
-                  child: Center(
-                    child: Text(
-                      "Which one are you?",
-                      style: TextStyle(
-                        color: Primary,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
+                SizedBox(height: context.screenHeight * 0.08,),
+                Center(
+                  child: Text(
+                    "Which one are you?",
+                    style: TextStyle(
+                      color: Primary,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
+                SizedBox(height: context.screenHeight * 0.05,),
+
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children:
                   [
@@ -107,7 +108,7 @@ class _acctypeState extends State<acctype> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Text(
-                                    "Female",
+                                    "Agency",
                                     style: TextStyle(color: Primary,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
@@ -120,8 +121,10 @@ class _acctypeState extends State<acctype> {
                     ),
                   ],
                 ),
+                SizedBox(height: context.screenHeight * 0.048,),
+
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 48.0,vertical: 42),
+                  padding: const EdgeInsets.symmetric(horizontal: 48.0,),
                   child: Text(textAlign: TextAlign.center,
                       "To give you a customize experience we need to know who are you",
                       style: TextStyle(
@@ -132,9 +135,9 @@ class _acctypeState extends State<acctype> {
                   ),
                 ),
 
-                SizedBox(height: 91,),
+                SizedBox(height: context.screenHeight * 0.14,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0,),
                   child: Row(
                     children: [
                       ContinueButton(

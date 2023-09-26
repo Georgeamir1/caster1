@@ -1,4 +1,4 @@
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,6 @@ final stnamekey = GlobalKey<FormState>();
 final secnamekey = GlobalKey<FormState>();
 String? stName;
 String? secName;
-
-
 class _nameState extends State<name> {
   @override
 

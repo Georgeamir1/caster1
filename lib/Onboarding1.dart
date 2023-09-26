@@ -1,9 +1,9 @@
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:flutter/material.dart';
-
 import 'Login.dart';
 import 'Onboarding2.dart';
-
+import 'core/functions/get_device_type.dart';
+import 'core/enums/device_type.dart';
 class Onboarding1 extends StatefulWidget {
 
 
@@ -17,18 +17,21 @@ class _Onboarding1State extends State<Onboarding1> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 52,),
-            Image.asset('assets/images/temp1.png'),
+            SizedBox(height: context.screenHeight * 0.03,),
+            Image.asset(
+              'assets/images/temp1.png',
+              width:  context.screenWidth ,
+              height: context.screenHeight * 0.5
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
                 children:
                 [
-                  SizedBox(height: 40,),
+                  SizedBox(height: context.screenHeight * 0.05,),
                   Text(textAlign: TextAlign.center,
                       "Make friends with the people like you",
                       style: TextStyle(color: black,
@@ -36,7 +39,7 @@ class _Onboarding1State extends State<Onboarding1> {
                         fontWeight: FontWeight.w700,
                       )
                   ),
-                  SizedBox(height: 16,),
+                  SizedBox(height: context.screenHeight * 0.02,),
                   Text(textAlign: TextAlign.center,
                       "Interact with people with the same \n interest like you",
                       style: TextStyle(color: black,
@@ -44,59 +47,20 @@ class _Onboarding1State extends State<Onboarding1> {
                         fontWeight: FontWeight.w400,
                       )
                   ),
-                  SizedBox(height: 32,),
+                  SizedBox(height: context.screenHeight * 0.04,),
+                Row(
+                  children: [
+                    ContinueButton(
+                        buttonText: "Continue",
+                        nextPage: Onboarding2()),
+                  ],
+                )             ,
+                  SizedBox(height: context.screenHeight * 0.02,),
                   Row(
                     children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Primary, // Set the background color
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32), // Set the border radius
-                            ),
-                            fixedSize: Size.fromHeight(56), // Set the height of the button
-                          ),
-                          onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Onboarding2()),);},
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      )
+                      SignInButton(),
                     ],
-                  ),
-                  SizedBox(height: 16,),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Secondary, // Set the background color
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32), // Set the border radius
-                            ),
-                            fixedSize: Size.fromHeight(56), // Set the height of the button
-                          ),
-                          onPressed: () { Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => login()),);},
-                          child: Text(
-                            "Sign in",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 48,),
+                  )
                 ],
               ),
             ),

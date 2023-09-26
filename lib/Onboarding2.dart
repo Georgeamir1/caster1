@@ -1,4 +1,4 @@
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/onboarding3.dart';
 import 'package:flutter/material.dart';
 
@@ -21,13 +21,14 @@ class _Onboarding2State extends State<Onboarding2> {
         body: SafeArea(
           child: Column(
             children: [
-              SizedBox(height:100,),
-              Image.asset('assets/images/temp2.png'),
+
+              Image.asset('assets/images/temp2.png',
+                  width:  context.screenWidth  ,
+                  height: context.screenHeight * 0.6),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 40,),
                     Text(textAlign: TextAlign.center,
                         "Find your preferences models",
                         style: TextStyle(color: black,
@@ -35,7 +36,7 @@ class _Onboarding2State extends State<Onboarding2> {
                           fontWeight: FontWeight.w700,
                         )
                     ),
-                    SizedBox(height: 16,),
+                    SizedBox(height: context.screenHeight * 0.01,),
                     Text(textAlign: TextAlign.center,
                         "Join us with other millions of people and find your best matches",
                         style: TextStyle(color: black,
@@ -43,61 +44,20 @@ class _Onboarding2State extends State<Onboarding2> {
                           fontWeight: FontWeight.w400,
                         )
                     ),
-                    SizedBox(height: 32,),
+                    SizedBox(height: context.screenHeight * 0.04,),
                     Row(
                       children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Primary, // Set the background color
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32), // Set the border radius
-                              ),
-                              fixedSize: Size.fromHeight(56), // Set the height of the button
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Onboarding3()),);
-                              },
-                            child: Text(
-                              "Continue",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        )
+                        ContinueButton(
+                            buttonText: "Continue",
+                            nextPage: Onboarding3()),
                       ],
-                    ),
-                    SizedBox(height: 16,),
+                    )             ,
+                    SizedBox(height: context.screenHeight * 0.02,),
                     Row(
                       children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Secondary, // Set the background color
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32), // Set the border radius
-                              ),
-                              fixedSize: Size.fromHeight(56), // Set the height of the button
-                            ),
-                            onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => login()),);},
-                            child: Text(
-                              "Sign in",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        )
+                        SignInButton(),
                       ],
-                    ),
-                    SizedBox(height: 48,),
+                    )
                   ],
                 ),
               ),

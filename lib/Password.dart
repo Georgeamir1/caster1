@@ -1,10 +1,9 @@
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
 import 'Username.dart';
 import 'regBirthdate.dart';
-
 class regPassword extends StatefulWidget {
 
 
@@ -13,15 +12,10 @@ class regPassword extends StatefulWidget {
 }
 final Passwordkey = GlobalKey<FormState>();
 String? Password;
-
-
 class _regPasswordState extends State<regPassword> {
   @override
-
   Widget build(BuildContext context) {
-
     return Scaffold(
-
         body:
         SafeArea(
             child:
@@ -75,15 +69,32 @@ class _regPasswordState extends State<regPassword> {
                                       if (value == null || value.isEmpty) {
                                         return 'Please enter your password';
                                       }
-
-                                      // Regex pattern to validate password
-                                      String pattern =
-                                          r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
-
-                                      RegExp regex = RegExp(pattern);
-                                      if (!regex.hasMatch(value)) {
-                                        return 'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.';
+                                      // Check for minimum length
+                                      if (value.length < 8) {
+                                        return 'Password must be at least 8 characters long';
                                       }
+
+                                      // Check for at least one uppercase letter
+                                      if (!value.contains(RegExp(r'[A-Z]'))) {
+                                        return 'Password must contain at least one uppercase letter';
+                                      }
+
+                                      // Check for at least one lowercase letter
+                                      if (!value.contains(RegExp(r'[a-z]'))) {
+                                        return 'Password must contain at least one lowercase letter';
+                                      }
+
+                                      // Check for at least one digit
+                                      if (!value.contains(RegExp(r'[0-9]'))) {
+                                        return 'Password must contain at least one digit';
+                                      }
+
+                                      // Check for at least one special character
+                                      if (!value.contains(RegExp(r'[!@#$%^&*()_+{}[\]:;<>,.?~\\-]'))) {
+                                        return 'Password must contain at least one special character';
+                                      }
+
+                                      // Password meets all criteria
                                       return null;
                                     },
                                     onChanged: (value)
@@ -102,7 +113,6 @@ class _regPasswordState extends State<regPassword> {
                           ],
                         ),
                       ),
-
                     ],
                   ),
                 ),

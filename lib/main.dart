@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:caster1/regBirthdate.dart';
 import 'package:flutter/material.dart';
-import 'componants.dart';
+import 'core/ui_components/componants.dart';
 import 'Onboarding1.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+import 'editprofile.dart';
 
 void main() {
 
@@ -35,7 +38,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: _showSplash ? const SplashScreen() :  Onboarding1(),
+      home: Onboarding1(),
+      // home: _showSplash ? const SplashScreen() :  Editprofile(),
     );
   }
 }

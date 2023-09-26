@@ -1,4 +1,4 @@
-import 'package:caster1/componants.dart';
+import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/regGender.dart';
 import 'package:caster1/regPhone.dart';
 import 'package:flutter/material.dart';

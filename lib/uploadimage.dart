@@ -1,20 +1,14 @@
 import 'dart:io';
+import 'package:caster1/test.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'componants.dart';
-
-
-
-
+import 'core/ui_components/componants.dart';
+import 'editprofile.dart';
 class ImagePickerPage extends StatefulWidget {
   @override
   _ImagePickerPageState createState() => _ImagePickerPageState();
 }
-
 class _ImagePickerPageState extends State<ImagePickerPage> {
-  List<File?> images = [null, null, null, null, null, null];
-
   Future<void> pickImage(int index) async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -26,26 +20,27 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
   }
   @override
   Widget build(BuildContext context) {
+    print(context.screenHeight );
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BackButton(),
-              Center(
-                child: Text(
-                    "Upload your photos",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: Primary,
-                    )
-                ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BackButtonWidget(),
+            Center(
+              child: Text(
+                  "Upload your photos",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Primary,
+                  )
               ),
-              SizedBox(height: 24),
-              // First row with custom layout
-              Row(
+            ),
+            SizedBox(height: 24),
+            // First row with custom layout
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
                 children: [
                   // First big item
                   Expanded(
@@ -74,75 +69,75 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 8,), // GridView for the rest of the items
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 16,
+            ),
+            SizedBox(height: 8,), // GridView for the rest of the items
+            Expanded(
+              child: GridView.builder(padding: EdgeInsets.symmetric(horizontal: 16),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 16,
+                ),
+                itemCount: images.length - 3,  // subtract the first three
+                itemBuilder: (context, index) {
+                  int imageIndex = index + 3;  // adjust index for the first three
+                  return GestureDetector(
+                    onTap: () => pickImage(imageIndex),
+                    child: _buildImageContainer(imageIndex),
+                  );
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+              child: Row(
+                children: [
+                  Text(
+                    '5',
+                    style: TextStyle(
+                      color: Primary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  itemCount: images.length - 3,  // subtract the first three
-                  itemBuilder: (context, index) {
-                    int imageIndex = index + 3;  // adjust index for the first three
-                    return GestureDetector(
-                      onTap: () => pickImage(imageIndex),
-                      child: _buildImageContainer(imageIndex),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-                child: Row(
-                  children: [
-                    Text(
-                      '5',
-                      style: TextStyle(
-                        color: Primary,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
+                  Text(
+                    "/5",
+                    style: TextStyle(
+                      color: Secondary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
                     ),
-                    Text(
-                      "/5",
-                      style: TextStyle(
-                        color: Secondary,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child:
-                ProgressLine(
-                  value: 1, // Replace 0.8 with the actual progress value
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child:
+              ProgressLine(
+                value: 1, // Replace 0.8 with the actual progress value
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-                child: Row(
-                  children: [
-                    ContinueButton(
-                      buttonText: 'Next',
-                      nextPage: ImagePickerPage(), // Replace NextPage with the actual next page widget
-                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
+              child: Row(
+                children: [
+                  ContinueButton(
+                    buttonText: 'Next',
+                    nextPage: Editprofile(), // Replace NextPage with the actual next page widget
+                  ),
 
-                  ],
-                ),
+                ],
               ),
+            ),
 
-            ],
-          ),
+          ],
         ),
 
       ),
     );
   }
-
   Widget _buildImageContainer(int index, {double height = double.infinity}) {
     return Container(
       height: height,
@@ -158,8 +153,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
-                Icon(Icons.face_retouching_natural_outlined,size: 35, color: Colors.black26),
+                Icon(Icons.tag_faces_rounded,size: 35, color: Colors.black26),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -167,10 +161,11 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row
-                          (children:
+                          (mainAxisAlignment: MainAxisAlignment.center,
+                          children:
                         [
                           Icon(Icons.add,color: Colors.white),
-                          Text('add',style: TextStyle(color: Colors.white),)
+                          Text('Add',style: TextStyle(color: Colors.white),)
                         ],),
                       )),
                 )
@@ -183,6 +178,5 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
       ),
     );
   }
-
   }
 
