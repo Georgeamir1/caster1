@@ -249,6 +249,58 @@ extension ContextExtension on BuildContext {
   double get screenWidth => MediaQuery.of(this).size.width;
   double get screenHeight => MediaQuery.of(this).size.height;
 }
+class LanguageContainer extends StatelessWidget {
+  final String imagePath;
+  final String text;
+  final bool isChecked;
+  final ValueChanged<bool?> onChanged;
+
+  LanguageContainer({
+    required this.imagePath,
+    required this.text,
+    required this.isChecked,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(color: Colors.grey[300]!),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
+        child: Row(
+          children: [
+            Image.asset(
+              imagePath,
+            ),
+            SizedBox(width: 16.0),
+            Expanded(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                )
+              ),
+            ),
+            Checkbox(
+              activeColor: Secondary,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+              value: isChecked,
+              onChanged: onChanged,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 // ........................................................
 bool ismale = false;
 bool isfemale = false;

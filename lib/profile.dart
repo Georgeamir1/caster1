@@ -93,7 +93,7 @@ return Scaffold
                   ProfileButtons(
                     icon: Icon(Icons.translate,color: Secondary),
                       buttonText: "Language",
-                    nextPage: profile(),
+                    nextPage: Language(),
                   ),
                   SizedBox(height: 16,),
                   ProfileButtons(

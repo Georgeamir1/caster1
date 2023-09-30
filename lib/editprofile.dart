@@ -335,7 +335,6 @@ class _EditprofileState extends State<Editprofile> {
                      child: CupertinoSlider(
                        activeColor: Primary,
                        value: height,
-                       divisions: 250,
                        onChanged: (value) {
                          setState(() {
                            height= value;
@@ -376,7 +375,6 @@ Image.asset("assets/images/man.png",height: 30),
                      child: CupertinoSlider(
                        activeColor: Primary,
                        value: weight,
-                       divisions: 180,
                        onChanged: (value) {
                          setState(() {
                            weight= value;

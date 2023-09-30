@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'core/ui_components/componants.dart';
 import 'Onboarding1.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
 import 'editprofile.dart';
-
 void main() {
-
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
@@ -20,7 +17,6 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
-
 class _MyAppState extends State<MyApp> {
   bool _showSplash = false;
 
