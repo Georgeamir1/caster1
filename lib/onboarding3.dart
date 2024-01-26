@@ -42,13 +42,20 @@ class _Onboarding3State extends State<Onboarding3> {
                       children: [
                         Expanded(
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Primary, // Set the background color
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32), // Set the border radius
-                              ),
-                              fixedSize: Size.fromHeight(context.screenHeight * 0.06,), // Set the height of the button
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(Primary),
+                                shape: MaterialStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32), // Set the border radius
+                                  ),
+
+                                ),
+                                fixedSize: MaterialStatePropertyAll(
+                                  Size(double.infinity, context.screenHeight * 0.067),
+                                )
+                              // Set the height of the button
                             ),
+
                             onPressed: () { Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => login()),);},
@@ -57,7 +64,7 @@ class _Onboarding3State extends State<Onboarding3> {
                                 CircleAvatar(backgroundColor: Colors.white,maxRadius: context.screenHeight * 0.025,child:  Icon(color: Primary,Icons.phone_in_talk_sharp,), ),
                                 Spacer(),
                                 Text(
-                                  "Login with Phone",
+                                  "Login with Casty",
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
@@ -77,12 +84,18 @@ class _Onboarding3State extends State<Onboarding3> {
                         Expanded(
                           child:
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Secondary, // Set the background color
-                              shape: RoundedRectangleBorder(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(Secondary),
+                              shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(32), // Set the border radius
                               ),
-                              fixedSize: Size.fromHeight(context.screenHeight * 0.06,), // Set the height of the button
+
+                              ),
+                              fixedSize: MaterialStatePropertyAll(
+                                Size(double.infinity, context.screenHeight * 0.067),
+                              )
+                              // Set the height of the button
                             ),
                             onPressed: () {},
                             child: Row(

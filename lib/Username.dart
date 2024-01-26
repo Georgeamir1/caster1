@@ -3,7 +3,7 @@ import 'package:caster1/regName.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
-import 'regBirthdate.dart';
+import 'regDate.dart';
 
 class regusername extends StatefulWidget {
 
@@ -47,6 +47,7 @@ class _regusernameState extends State<regusername> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: Secondary,
@@ -105,19 +106,8 @@ class _regusernameState extends State<regusername> {
                   ),
                 ),
                 Spacer(),
+                End(value: 3, nextPage: name())
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-                  child: Row(
-                    children: [
-                      ContinueButton(
-                        buttonText: 'Continue',
-                        nextPage: name(), // Replace NextPage with the actual next page widget
-                      ),
-
-                    ],
-                  ),
-                ),
 
               ],
             )

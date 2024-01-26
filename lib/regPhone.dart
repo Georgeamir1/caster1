@@ -10,8 +10,7 @@ class regPhone extends StatefulWidget {
   @override
   _regPhoneState createState() => _regPhoneState();
 }
-final PhoneKey = GlobalKey<FormState>();
-String phoneNumber='';
+
 class _regPhoneState extends State<regPhone> {
 
   @override

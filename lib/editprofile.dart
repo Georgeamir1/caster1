@@ -561,7 +561,6 @@ Image.asset("assets/images/man.png",height: 30),
                     )
                 ),
                     width: double.infinity,
-                    height: 56,
                     decoration:
                     BoxDecoration(
                         borderRadius: BorderRadius.circular(16),

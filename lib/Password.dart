@@ -1,17 +1,18 @@
 import 'package:caster1/core/ui_components/componants.dart';
+import 'package:caster1/regAgencyName.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
 import 'Username.dart';
-import 'regBirthdate.dart';
+import 'accType.dart';
+import 'regDate.dart';
 class regPassword extends StatefulWidget {
 
 
   @override
   _regPasswordState createState() => _regPasswordState();
 }
-final Passwordkey = GlobalKey<FormState>();
-String? Password;
+
 class _regPasswordState extends State<regPassword> {
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,7 @@ class _regPasswordState extends State<regPassword> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: Secondary,
@@ -117,19 +119,8 @@ class _regPasswordState extends State<regPassword> {
                   ),
                 ),
                 Spacer(),
+                End(value: 2, nextPage: model! ? regusername() : regagencyname())
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-                  child: Row(
-                    children: [
-                      ContinueButton(
-                        buttonText: 'Continue',
-                        nextPage: regusername(), // Replace NextPage with the actual next page widget
-                      ),
-
-                    ],
-                  ),
-                ),
 
               ],
             )

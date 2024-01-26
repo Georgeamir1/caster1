@@ -1,5 +1,5 @@
 import 'package:caster1/core/ui_components/componants.dart';
-import 'package:caster1/regBirthdate.dart';
+import 'package:caster1/regDate.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
@@ -149,43 +149,8 @@ class _regGenderState extends State<regGender> {
           ],
         ),
         Spacer(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-          child: Row(
-            children: [
-              Text('3',
-                  style: TextStyle(
-                    color: Primary,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  )),
-              Text("/5",
-                  style: TextStyle(
-                    color: Secondary,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  )),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: ProgressLine(
-            value: 0.6, // Replace 0.8 with the actual progress value
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-          child: Row(
-            children: [
-              ContinueButton(
-                buttonText: 'Continue',
-                nextPage:
-                    Interests(), // Replace NextPage with the actual next page widget
-              ),
-            ],
-          ),
-        ),
+        End(value: 6, nextPage: Interests())
+
       ],
     )));
   }

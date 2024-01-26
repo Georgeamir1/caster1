@@ -1,6 +1,6 @@
 import 'package:caster1/Email.dart';
 import 'package:caster1/core/ui_components/componants.dart';
-import 'package:caster1/regBirthdate.dart';
+import 'package:caster1/regDate.dart';
 import 'package:caster1/regName.dart';
 import 'package:caster1/regPhone.dart';
 import 'package:caster1/regVerPhone.dart';
@@ -9,10 +9,12 @@ class acctype extends StatefulWidget {
   @override
   _acctypeState createState() => _acctypeState();
 }
+bool model = false;
+bool agency = false;
+
 final birthdatekey = GlobalKey<FormState>();
 class _acctypeState extends State<acctype> {
-  bool model=false;
-  bool agency=false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +48,16 @@ class _acctypeState extends State<acctype> {
                       height: 200,
                       child:
                       Container(decoration: BoxDecoration(
-                        border: Border.all(color:  model ? Colors.black : Colors.transparent) ,
                         borderRadius: BorderRadius.circular(24),),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              model=!model;
+                              model=!model!;
                               agency= false;
 
                             });
                           },
-                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Secondary),
+                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(model!? Secondary : Colors.white),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),
@@ -71,7 +72,7 @@ class _acctypeState extends State<acctype> {
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Text(
                                     "Model",
-                                    style: TextStyle(color: Colors.white,
+                                    style: TextStyle(color: model!? Colors.white :Primary ,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
                                     )
@@ -87,15 +88,14 @@ class _acctypeState extends State<acctype> {
                       height: 200,
                       child:
                       Container(decoration: BoxDecoration(
-                        border: Border.all(color:  agency ? Primary :Colors.transparent ) ,
                         borderRadius: BorderRadius.circular(24),),
                         child: ElevatedButton(
                           onPressed: () { setState(() {
                             model=false;
-                            agency=!agency;
+                            agency=!agency!;
 
                           });},
-                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white),
+                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(agency!? Secondary : Colors.white),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),
@@ -109,7 +109,7 @@ class _acctypeState extends State<acctype> {
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Text(
                                     "Agency",
-                                    style: TextStyle(color: Primary,
+                                    style: TextStyle(color: agency!? Colors.white : Primary,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
                                     )

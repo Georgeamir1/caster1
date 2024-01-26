@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import '../../accType.dart';
 import '../../regName.dart';
 import '../enums/device_type.dart';
 import '../functions/get_device_type.dart';
@@ -48,9 +49,9 @@ class _BirthdateFormFieldState extends State<BirthdateFormField> {
       readOnly: true,
       onTap: () => _selectDate(context),
       decoration: InputDecoration(
-        hintText: _controller.text == null || _controller.text.isEmpty
-            ? 'Select your birth date'
-            : _controller.text,
+        hintText: selectedDate == null
+            ? model! ? 'Select your birth date' : "Select date of establishment"
+            : "${selectedDate?.day}/${selectedDate?.month}/${selectedDate?.year}",
         border: InputBorder.none,
         suffixIcon: Icon(Icons.calendar_today),
       ),
@@ -185,6 +186,105 @@ class ContinueButton extends StatelessWidget {
     );
   }
 }
+class ContinueButton2 extends StatelessWidget {
+  final Widget nextPage;
+  const ContinueButton2({
+    Key? key,
+    required this.nextPage,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 48),
+      child: Row(mainAxisAlignment: MainAxisAlignment.end,
+
+        children: [
+
+          FloatingActionButton(
+            child: Icon(Icons.arrow_forward_rounded),
+            backgroundColor: Primary,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => nextPage),
+              );
+            },
+
+          ),
+        ],
+      ),
+    );
+  }
+}
+class End extends StatelessWidget {
+  final Widget nextPage;
+  final int value;
+  const End({
+    Key? key,
+    required this.value,
+    required this.nextPage,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return
+      Stack(alignment: Alignment.bottomRight,
+        children: [
+          Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 48),
+    child: Row(mainAxisAlignment: MainAxisAlignment.end,
+
+    children: [
+
+    FloatingActionButton(
+    child: Icon(Icons.arrow_forward_rounded),
+    backgroundColor: Primary,
+    onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => nextPage),
+    );
+    },
+
+    ),
+    ],
+    ),
+    ),
+          Column(
+    children: [
+    Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 24.0,),
+    child: Row(children:
+    [
+    Text('$value',style: TextStyle(color: Primary,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    )),
+    Text(model!? "/9": "/7",style: TextStyle(color: Secondary,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    )),
+    ],
+    ),
+    ),
+    Padding(
+    padding: const EdgeInsets.all(24),
+    child: ClipRRect(
+    borderRadius: BorderRadius.circular(10.0),
+    child: LinearProgressIndicator(
+    value: model!? value/9 : value/7,
+    backgroundColor: Secondary,
+    valueColor: AlwaysStoppedAnimation<Color>(Primary),
+    ),
+    ),
+    ),
+    ],
+    )
+        ],
+      );
+
+  }
+}
 class SignInButton extends StatelessWidget {
   final String? buttonText;
   final Widget? nextPage;
@@ -226,7 +326,7 @@ class SignInButton extends StatelessWidget {
   }
 }
 class ProgressLine extends StatelessWidget {
-  final double value;
+  final int value;
   const ProgressLine({
     Key? key,
     required this.value,
@@ -234,13 +334,36 @@ class ProgressLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10.0),
-      child: LinearProgressIndicator(
-        value: value,
-        backgroundColor: Secondary,
-        valueColor: AlwaysStoppedAnimation<Color>(Primary),
-      ),
+    return
+      Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0,),
+          child: Row(children:
+          [
+            Text('$value',style: TextStyle(color: Primary,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            )),
+            Text("/7",style: TextStyle(color: Secondary,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            )),
+          ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(24),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: LinearProgressIndicator(
+              value: value/7,
+              backgroundColor: Secondary,
+              valueColor: AlwaysStoppedAnimation<Color>(Primary),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -302,19 +425,27 @@ class LanguageContainer extends StatelessWidget {
 }
 
 // ........................................................
+
+
 bool ismale = false;
 bool isfemale = false;
+
 bool ShowPeobleinRange = false;
+
 bool NotificationSwitch = false;
+
 bool visable = false;
+
 bool Travelin = false;
 bool Travelout = false;
 // ........................................................
 double height = 120;
-DateTime? selectedDate;
-int? age;
 double weight = 70;
 double distance = 50;
+
+DateTime? selectedDate;
+int? age;
+
 // ........................................................
 Color black = const Color(0xff17182a);
 Color Primary = const Color(0xFF24377D);
@@ -322,6 +453,7 @@ Color Secondary = const Color(0xff91b6ee);
 Color Secondary2 = const Color(0xffcce6ff);
 // ........................................................
 GlobalKey<FormState> aboutKey = GlobalKey<FormState>();
+GlobalKey<FormState> agencyaboutKey = GlobalKey<FormState>();
 final daysoutkey = GlobalKey<FormState>();
 int daysout = 0;
 final Racekey = GlobalKey<FormState>();
@@ -332,3 +464,13 @@ final Haircolorkey = GlobalKey<FormState>();
 String? Haircolor;
 final Fullnamekey = GlobalKey<FormState>();
 String FullName = stName! + secName!;
+final emailkey = GlobalKey<FormState>();
+String? Email;
+final agencyemailkey = GlobalKey<FormState>();
+String? agencyEmail;
+final Passwordkey = GlobalKey<FormState>();
+String? Password;
+final agencynamekey = GlobalKey<FormState>();
+String? agencyname;
+final PhoneKey = GlobalKey<FormState>();
+String phoneNumber='';

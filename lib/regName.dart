@@ -2,7 +2,7 @@ import 'package:caster1/core/ui_components/componants.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
 
-import 'regBirthdate.dart';
+import 'regDate.dart';
 
 class name extends StatefulWidget {
 
@@ -46,6 +46,7 @@ class _nameState extends State<name> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: Secondary,
@@ -96,6 +97,7 @@ class _nameState extends State<name> {
                       SizedBox(height: 32,),
                       Container(
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: Secondary,
@@ -147,38 +149,8 @@ class _nameState extends State<name> {
                   ),
                 ),
                  Spacer(),
-                 Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 8),
-                   child: Row(children:
-                [
-                    Text('1',style: TextStyle(color: Primary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                    Text("/5",style: TextStyle(color: Secondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                ],
-                ),
-                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: ProgressLine(value: 0.2, // Replace 0.8 with the actual progress value
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-                  child: Row(
-                    children: [
-                      ContinueButton(
-                        buttonText: 'Continue',
-                        nextPage: birthdateReg(), // Replace NextPage with the actual next page widget
-                      ),
+                 End(value: 4, nextPage: birthdateReg())
 
-                    ],
-                  ),
-                ),
 
               ],
             )

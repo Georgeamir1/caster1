@@ -1,4 +1,5 @@
 import 'package:caster1/core/ui_components/componants.dart';
+import 'package:caster1/regLanguages.dart';
 import 'package:caster1/uploadimage.dart';
 import 'package:flutter/material.dart';
 
@@ -125,48 +126,7 @@ class _InterestsState extends State<Interests> {
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-              child: Row(
-                children: [
-                   Text(
-                    '4',
-                    style: TextStyle(
-                      color: Primary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Text(
-                    "/5",
-                    style: TextStyle(
-                      color: Secondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child:
-              ProgressLine(
-                value: 0.8, // Replace 0.8 with the actual progress value
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-              child: Row(
-                children: [
-                  ContinueButton(
-                    buttonText: 'Continue',
-                    nextPage: ImagePickerPage(), // Replace NextPage with the actual next page widget
-                  ),
-
-                ],
-              ),
-            ),
+           End(value: 7, nextPage: regLanguage())
           ],
         ),
       ),

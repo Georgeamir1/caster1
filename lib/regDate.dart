@@ -1,7 +1,10 @@
 import 'package:caster1/core/ui_components/componants.dart';
+import 'package:caster1/regAgencyData.dart';
 import 'package:caster1/regGender.dart';
 import 'package:caster1/regVerPhone.dart';
 import 'package:flutter/material.dart';
+
+import 'accType.dart';
 
 class birthdateReg extends StatefulWidget {
 
@@ -17,7 +20,6 @@ class _birthdateRegState extends State<birthdateReg> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-
         body:
         SafeArea(
             child:
@@ -29,7 +31,8 @@ class _birthdateRegState extends State<birthdateReg> {
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Center(
                     child: Text(
-                      "When is your birthdate?",
+                      model!?
+                      "When is your birthdate?" :" Your agency since date?" ,
                       style: TextStyle(
                         color: Primary,
                         fontSize: 24,
@@ -44,6 +47,7 @@ class _birthdateRegState extends State<birthdateReg> {
                     padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 16),
                     child: Container(
                       decoration: BoxDecoration(
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: Secondary,
@@ -76,40 +80,7 @@ class _birthdateRegState extends State<birthdateReg> {
                   ),
                 ),
             Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 8),
-                  child: Row(children:
-                  [
-                    Text('2',style: TextStyle(color: Primary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                    Text("/5",style: TextStyle(color: Secondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    )),
-                  ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child:
-                  ProgressLine(
-                    value: 0.4, // Replace 0.8 with the actual progress value
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24),
-                  child: Row(
-                    children: [
-                      ContinueButton(
-                        buttonText: 'Continue',
-                        nextPage: regGender(), // Replace NextPage with the actual next page widget
-                      ),
-
-                    ],
-                  ),
-                ),
+                End(value: 5, nextPage:model!? regGender() : regagencydate() )
               ],
             )
         ));

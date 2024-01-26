@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:caster1/regBirthdate.dart';
+import 'package:caster1/regDate.dart';
 import 'package:flutter/material.dart';
 import 'core/ui_components/componants.dart';
 import 'Onboarding1.dart';
